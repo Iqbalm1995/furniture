@@ -52,15 +52,15 @@
                   </tr>
                   <tr>
                     <td><strong>Panjang</strong></td>
-                    <td><?=$produk['u_panjang']?> Meter</td>
+                    <td><?=$produk['u_panjang']?> cm</td>
                   </tr>
                   <tr>
                     <td><strong>Lebar</strong></td>
-                    <td><?=$produk['u_lebar']?> Meter</td>
+                    <td><?=$produk['u_lebar']?> cm</td>
                   </tr>
                   <tr>
                     <td><strong>Tinggi</strong></td>
-                    <td><?=$produk['u_tinggi']?> Meter</td>
+                    <td><?=$produk['u_tinggi']?> cm</td>
                   </tr>
                 </table>
                 <hr>

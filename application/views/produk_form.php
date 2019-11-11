@@ -45,20 +45,20 @@
 					  <div class="row">
 					  	<div class="col-md-4">
 					  		<div class="form-group">
-							    <label>Panjang(m)</label>
-							    <input type="text" name="u_panjang" class="form-control" placeholder="(Dalam Ukuran Meter)" maxlength="3" required>
+							    <label>Panjang(cm)</label>
+							    <input type="text" name="u_panjang" class="form-control" placeholder="(Dalam Ukuran Centi Meter)" maxlength="3" required>
 							</div>
 					  	</div>
 					  	<div class="col-md-4">
 					  		<div class="form-group">
-							    <label>Lebar(m)</label>
-							    <input type="text" name="u_lebar" class="form-control" placeholder="(Dalam Ukuran Meter)" maxlength="3" required>
+							    <label>Lebar(cm)</label>
+							    <input type="text" name="u_lebar" class="form-control" placeholder="(Dalam Ukuran Centi Meter)" maxlength="3" required>
 							</div>
 					  	</div>
 					  	<div class="col-md-4">
 					  		<div class="form-group">
-							    <label>Tinggi(m)</label>
-							    <input type="text" name="u_tinggi" class="form-control" placeholder="(Dalam Ukuran Meter)" maxlength="3" required>
+							    <label>Tinggi(cm)</label>
+							    <input type="text" name="u_tinggi" class="form-control" placeholder="(Dalam Ukuran Centi Meter)" maxlength="3" required>
 							</div>
 					  	</div>
 					  </div>

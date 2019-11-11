@@ -46,8 +46,8 @@
                             if ($r->id == 1) {?>
                              -
                           <?php  }else{ ?> 
-                            <a href="<?php echo base_url('user_admin/edit/'.$r->id); ?>"><i class="far fa-edit"></i> Ubah</a> 
-                            <a href="<?php echo base_url('user_admin/hapus/'.$r->id); ?>"><i class="far fa-trash"></i> Hapus</a>
+                            <a href="<?php echo base_url('user_admin/edit/'.$r->id); ?>">Ubah</a> | 
+                            <a href="<?php echo base_url('user_admin/hapus/'.$r->id); ?>">Hapus</a>
                           <?php } ?>
                         </td>
                       </tr>
