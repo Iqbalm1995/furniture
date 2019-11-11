@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'furniture',
+	'hostname' => 'timbul-jaya.com',
+	'username' => 'timbulja_adminer',
+	'password' => 'R7ll7VHl9]+rQ7',
+	'database' => 'timbulja_furniture',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

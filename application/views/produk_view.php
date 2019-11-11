@@ -3,15 +3,15 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Data Assets</h1>
+          <h1 class="h3 mb-4 text-gray-800">Data Produk</h1>
           <?php echo $this->session->userdata('message1') <> '' ? $this->session->userdata('message1') : ''; ?>
           <div class="col-md-12">
-            <a class="btn btn-primary" href="<?php echo base_url('libs/tambah_data'); ?>">Tambah Data</a>
+            <a class="btn btn-primary" href="<?php echo base_url('produk/tambah_data'); ?>">Tambah Data</a>
           </div>
           <!-- DataTales Example -->
           <div class="card shadow mb-4 mt-2">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Tabel Assets</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Tabel Produk</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -23,7 +23,6 @@
                       <th>Nama File</th>
                       <th>Keterangan</th>
                       <th>Upload File</th>
-                      <th>Tanggal</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -34,16 +33,15 @@
                       <th>Nama File</th>
                       <th>Keterangan</th>
                       <th>Upload File</th>
-                      <th>Tanggal</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php 
                       $no = 1;
-                      foreach($libs as $r){ 
+                      foreach($produk as $r){ 
 
-                        $kategori_val    = $this->libs->get_id_val($r->kategori_id,'t_kategori');
+                        $kategori_val    = $this->produk->get_id_val($r->kategori_id,'t_kategori');
                     ?>
                       <tr>
                         <td><?php echo $no++ ?></td>
@@ -51,12 +49,12 @@
                         <td><?php echo $r->nama_file ?></td>
                         <td><?php echo $r->keterangan ?></td>
                         <td><a href="<?php echo base_url('upload_file/'.$r->upload_file) ?>" target="_blank"><?php echo $r->upload_file ?></a>
-                          <small>(<a href="<?php echo base_url('libs/download_file/'.$r->upload_file) ?>" target="_blank">Download</a>)</small>
+                          <small>(<a href="<?php echo base_url('produk/download_file/'.$r->upload_file) ?>" target="_blank">Download</a>)</small>
                         </td>
-                        <td><small><?php echo $r->tanggal ?></small></td>
                         <td>
-                          <a href="<?php echo base_url('libs/edit/'.$r->id); ?>">Edit</a> | 
-                          <a href="<?php echo base_url('libs/hapus/'.$r->id); ?>">Hapus</a>
+                          <a href="<?php echo base_url('produk/edit/'.$r->id); ?>">Edit</a> | 
+                          <a href="<?php echo base_url('produk/hapus/'.$r->id); ?>">Hapus</a> | 
+                          <a href="<?php echo base_url('produk/detail/'.$r->id); ?>">Detail</a>
                         </td>
                       </tr>
                     <?php } ?>

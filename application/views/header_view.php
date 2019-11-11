@@ -59,9 +59,9 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('libs/');?>">
+        <a class="nav-link" href="<?php echo base_url('produk/');?>">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Assets</span></a>
+          <span>Produk</span></a>
       </li>
 
       <li class="nav-item">
