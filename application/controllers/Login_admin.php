@@ -42,7 +42,7 @@ class Login_admin extends CI_Controller {
 				foreach ($datas as $row) {
 					# code...
 				}
-				$id 	  = $row->id;
+				$id 	  = $row->id_admin;
 				$data_session = array(
 					'id' 				=> $id,
 					'username' 			=> $user,
