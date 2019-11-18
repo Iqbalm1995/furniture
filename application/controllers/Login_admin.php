@@ -46,7 +46,7 @@ class Login_admin extends CI_Controller {
 				$data_session = array(
 					'id' 				=> $id,
 					'username' 			=> $user,
-					'nama' 				=> $nama,
+					'nama' 				=> $row->nama,
 
 					'status' 			=> "logindcaadministrator"
 					);
