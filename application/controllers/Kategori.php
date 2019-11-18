@@ -48,7 +48,7 @@ class Kategori extends CI_Controller {
 	}
 
 	function edit($id){
-		$where = array('id' => $id);
+		$where = array('id_kategori' => $id);
 		$data['kategori'] = $this->kategori->edit_data($where,'t_kategori')->result();
 		$this->load->view('header_view');
 		$this->load->view('kategori_edit', $data);
@@ -56,7 +56,7 @@ class Kategori extends CI_Controller {
 	}
 
 	function hapus($id){
-		$where = array('id' => $id);
+		$where = array('id_kategori' => $id);
 		$this->kategori->hapus_data($where,'t_kategori');
 		$this->session->set_flashdata('message1', '
 			<div class="alert alert-info alert-dismissible" role="alert">
@@ -68,7 +68,7 @@ class Kategori extends CI_Controller {
 	}
 
 	function proses_ubah(){
-		$id = $this->input->post('id');
+		$id = $this->input->post('id_kategori');
 		$nama_kategori = $this->input->post('nama_kategori');
 		$keterangan = $this->input->post('keterangan');
  
@@ -77,7 +77,7 @@ class Kategori extends CI_Controller {
 			'keterangan' => $keterangan
 			);
 
-		$where = array('id' => $id);
+		$where = array('id_kategori' => $id);
 
 		$this->kategori->update_data($where,$data,'t_kategori');
 		$this->session->set_flashdata('message1', '

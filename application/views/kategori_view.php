@@ -42,8 +42,8 @@
                         <td><?php echo $r->nama_kategori ?></td>
                         <td><?php echo $r->keterangan ?></td>
                         <td>
-                          <a href="<?php echo base_url('kategori/edit/'.$r->id); ?>">Edit</a> | 
-                          <a href="<?php echo base_url('kategori/hapus/'.$r->id); ?>">Hapus</a>
+                          <a href="<?php echo base_url('kategori/edit/'.$r->id_kategori); ?>">Edit</a> | 
+                          <a href="<?php echo base_url('kategori/hapus/'.$r->id_kategori); ?>">Hapus</a>
                         </td>
                       </tr>
                     <?php } ?>

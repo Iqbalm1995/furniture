@@ -15,15 +15,15 @@
 	            	<form action="<?php echo base_url('produk/proses_tambah'); ?>"  method="post" enctype="multipart/form-data">
 	            	  <div class="form-group">
 	            	  	<label>Kategori</label>
-	            	  	<select name="kategori_id" id="kategori_id" class="form-control">
+	            	  	<select name="id_kategori" id="id_kategori" class="form-control">
                           <?php foreach ($kategori as $rd){ ?>
-                              <option value="<?php echo $rd->id; ?>"><?php echo $rd->nama_kategori; ?></option>
+                              <option value="<?php echo $rd->id_kategori; ?>"><?php echo $rd->nama_kategori; ?></option>
                           <?php }; ?>
                         </select>
 	            	  </div>
 					  <div class="form-group">
-					    <label>Nama File</label>
-					    <input type="text" name="nama_file" class="form-control" placeholder="Isi Nama Produk" required>
+					    <label>Nama Produk</label>
+					    <input type="text" name="nama_produk" class="form-control" placeholder="Isi Nama Produk" required>
 					  </div>
 					  <div class="form-group">
 					    <label>Upload File</label>
@@ -34,8 +34,8 @@
 					    <input type="text" name="bahan" class="form-control" placeholder="Isi Bahan Produk" required>
 					  </div>
 					  <div class="form-group">
-					    <label>Berat(kg)</label>
-					    <input type="text" name="berat" class="form-control" placeholder="Isi Berat Produk" maxlength="4" required>
+					    <label>Harga Rp.</label>
+					    <input type="number" name="harga" class="form-control" placeholder="Isi Harga Produk" required>
 					  </div>
 					  <div class="form-group">
 					    <label>Merk</label>
@@ -45,20 +45,20 @@
 					  <div class="row">
 					  	<div class="col-md-4">
 					  		<div class="form-group">
-							    <label>Panjang(cm)</label>
-							    <input type="text" name="u_panjang" class="form-control" placeholder="(Dalam Ukuran Centi Meter)" maxlength="3" required>
+							    <label>Panjang(m)</label>
+							    <input type="text" name="panjang" class="form-control" placeholder="(Dalam Ukuran Centi Meter)" maxlength="3" required>
 							</div>
 					  	</div>
 					  	<div class="col-md-4">
 					  		<div class="form-group">
-							    <label>Lebar(cm)</label>
-							    <input type="text" name="u_lebar" class="form-control" placeholder="(Dalam Ukuran Centi Meter)" maxlength="3" required>
+							    <label>Lebar(m)</label>
+							    <input type="text" name="lebar" class="form-control" placeholder="(Dalam Ukuran Centi Meter)" maxlength="3" required>
 							</div>
 					  	</div>
 					  	<div class="col-md-4">
 					  		<div class="form-group">
-							    <label>Tinggi(cm)</label>
-							    <input type="text" name="u_tinggi" class="form-control" placeholder="(Dalam Ukuran Centi Meter)" maxlength="3" required>
+							    <label>Tinggi(m)</label>
+							    <input type="text" name="tinggi" class="form-control" placeholder="(Dalam Ukuran Centi Meter)" maxlength="3" required>
 							</div>
 					  	</div>
 					  </div>

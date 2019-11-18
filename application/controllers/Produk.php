@@ -58,16 +58,26 @@ class Produk extends CI_Controller {
 	function tambah_stok(){
 
 		$id_produk 		= $this->input->post('id_produk');
-		$warna 			= $this->input->post('warna');
+		$nama_warna 	= $this->input->post('nama_warna');
+		$kode_warna 	= $this->input->post('kode_warna');
 		$stok 			= $this->input->post('stok');
  
-		$data = array(
+		$dataWarna = array(
 			'id_produk' 	=> $id_produk,
-			'warna' 		=> $warna,
+			'nama_warna' 	=> $nama_warna,
+			'kode_warna' 	=> $kode_warna
+			);
+
+		$this->produk->input_data($dataWarna,'t_warna');
+
+		$dataStok = array(
+			'id_warna' 		=> $this->db->insert_id(),
 			'stok' 			=> $stok
 			);
 
-		$this->produk->input_data($data,'t_stok');
+		$this->produk->input_data($dataStok,'t_stok');
+
+		
 		$this->session->set_flashdata('message1', '
 			<div class="alert alert-info alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -88,38 +98,45 @@ class Produk extends CI_Controller {
 
 	function proses_tambah(){
 
-		$kategori_id 		= $this->input->post('kategori_id');
-		$nama_file 			= $this->input->post('nama_file');
+		$id_kategori 		= $this->input->post('id_kategori');
+		$nama_produk 		= $this->input->post('nama_produk');
 		$keterangan 		= $this->input->post('keterangan');
-		$tanggal 			= date('Y-m-d H:i:s');
-		$u_panjang 			= $this->input->post('u_panjang');
-		$u_lebar 			= $this->input->post('u_lebar');
-		$u_tinggi 			= $this->input->post('u_tinggi');
+		$harga 				= $this->input->post('harga');
+		$tanggal 			= date('Y-m-d');
+		$panjang 			= $this->input->post('panjang');
+		$lebar 				= $this->input->post('lebar');
+		$tinggi 			= $this->input->post('tinggi');
 		$bahan 				= $this->input->post('bahan');
-		$berat 				= $this->input->post('berat');
 		$merk 				= $this->input->post('merk');
  
-		$data = array(
-			'kategori_id' 	=> $kategori_id,
-			'nama_file' 	=> $nama_file,
+		$dataProduk = array(
+			'id_kategori' 	=> $id_kategori,
+			'nama_produk' 	=> $nama_produk,
 			'keterangan' 	=> $keterangan,
+			'harga' 		=> $harga,
 			'tanggal' 		=> $tanggal,
-			'u_panjang' 	=> $u_panjang,
-			'u_lebar' 		=> $u_lebar,
-			'u_tinggi' 		=> $u_tinggi,
 			'bahan' 		=> $bahan,
-			'berat' 		=> $berat,
 			'merk' 			=> $merk,
 			);
 
 		if(!empty($_FILES['upload_file']['name']))
 		{
 			$upload = $this->_do_upload();
-			$data['upload_file'] = $upload;
+			$dataProduk['upload_file'] = $upload;
 		}
 
 
-		$this->produk->input_data($data,'t_produk');
+		$this->produk->input_data($dataProduk,'t_produk');
+
+		$dataUkuran = array(
+			'id_produk' 	=> $this->db->insert_id(),
+			'panjang' 		=> $panjang,
+			'lebar' 		=> $lebar,
+			'tinggi' 		=> $tinggi,
+			);
+
+		$this->produk->input_ukuran($dataUkuran,'t_ukuran');
+
 		$this->session->set_flashdata('message1', '
 			<div class="alert alert-info alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -131,8 +148,8 @@ class Produk extends CI_Controller {
 
 	function edit($id){
 
-		$where = array('id' => $id);
-		$data['produk'] = $this->produk->edit_data($where,'t_produk')->result();
+		$where = array('t_produk.id_produk' => $id);
+		$data['produk'] = $this->produk->edit_data($where);
 		$data['kategori'] = $this->kategori->tampil_data()->result();
 
 		$this->load->view('header_view');
@@ -141,7 +158,7 @@ class Produk extends CI_Controller {
 	}
 
 	function hapus($id){
-		$where = array('id' => $id);
+		$where = array('id_produk' => $id);
 		$read_file = $this->produk->get_by_id($id);
 		if(file_exists('upload_file/'.$read_file->upload_file) && $read_file->upload_file)
 			unlink('upload_file/'.$read_file->upload_file);
@@ -157,9 +174,9 @@ class Produk extends CI_Controller {
 	}
 
 	function hapus_stok($id_produk, $id){
-		$where = array('id' => $id);
+		$where = array('id_warna' => $id);
 
-		$this->produk->hapus_data($where,'t_stok');
+		$this->produk->hapus_data($where,'t_warna');
 		$this->session->set_flashdata('message1', '
 			<div class="alert alert-info alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -170,34 +187,27 @@ class Produk extends CI_Controller {
 	}
 
 	function proses_ubah(){
-		$id = $this->input->post('id');
-		$kategori_id 		= $this->input->post('kategori_id');
-		$nama_file 			= $this->input->post('nama_file');
+		$id 				= $this->input->post('id_produk');
+		$id_kategori 		= $this->input->post('id_kategori');
+		$nama_produk 		= $this->input->post('nama_produk');
 		$keterangan 		= $this->input->post('keterangan');
-		$tanggal 			= date('Y-m-d H:i:s');
-		$u_panjang 			= $this->input->post('u_panjang');
-		$u_lebar 			= $this->input->post('u_lebar');
-		$u_tinggi 			= $this->input->post('u_tinggi');
+		$tanggal 			= date('Y-m-d');
+		$panjang 			= $this->input->post('panjang');
+		$lebar 				= $this->input->post('lebar');
+		$tinggi 			= $this->input->post('tinggi');
 		$bahan 				= $this->input->post('bahan');
-		$berat 				= $this->input->post('berat');
+		$harga 				= $this->input->post('harga');
 		$merk 				= $this->input->post('merk');
  
-		$data = array(
-			'kategori_id' 	=> $kategori_id,
-			'nama_file' 	=> $nama_file,
+		$dataProduk = array(
+			'id_kategori' 	=> $id_kategori,
+			'nama_produk' 	=> $nama_produk,
 			'keterangan' 	=> $keterangan,
 			'tanggal' 		=> $tanggal,
-			'u_panjang' 	=> $u_panjang,
-			'u_lebar' 		=> $u_lebar,
-			'u_tinggi' 		=> $u_tinggi,
 			'bahan' 		=> $bahan,
-			'berat' 		=> $berat,
+			'harga' 		=> $harga,
 			'merk' 			=> $merk,
 			);
-
-		// if(file_exists('upload_files/'.$read_file->upload_file) && $read_file->upload_file)
-		// 	unlink('upload_files/'.$read_file->upload_file);
-		// 	$data['upload_file'] = '';
 
 		if(!empty($_FILES['upload_file']['name']))
 		{
@@ -208,12 +218,21 @@ class Produk extends CI_Controller {
 			if(file_exists('upload_file/'.$read_file->upload_file) && $read_file->upload_file)
 			unlink('upload_file/'.$read_file->upload_file);
 
-			$data['upload_file'] = $upload;
+			$dataProduk['upload_file'] = $upload;
 		}
 
-		$where = array('id' => $id);
+		$where = array('id_produk' => $id);
 
-		$this->produk->update_data($where,$data,'t_produk');
+		$this->produk->update_data($where,$dataProduk,'t_produk');
+
+		$dataUkuran = array(
+			'panjang' 		=> $panjang,
+			'lebar' 		=> $lebar,
+			'tinggi' 		=> $tinggi,
+			);
+
+		$this->produk->update_data($where,$dataUkuran,'t_ukuran');
+
 		$this->session->set_flashdata('message1', '
 			<div class="alert alert-info alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

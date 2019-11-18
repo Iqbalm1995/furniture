@@ -20,59 +20,60 @@
                     <td colspan="2"><h4>Informasi Produk</h4></td>
                   </tr>
                   <tr>
-                    <td><strong>Kategori</strong></td>
-                    <td><?=$produk['nama_kategori']?></td>
+                    <td width="20%"><strong>Kategori</strong></td>
+                    <td>: <?=$produk['nama_kategori']?></td>
                   </tr>
                   <tr>
                     <td><strong>Nama Produk</strong></td>
-                    <td><?=$produk['nama_file']?></td>
+                    <td>: <?=$produk['nama_produk']?></td>
                   </tr>
                   <tr>
                     <td><strong>Nama File</strong></td>
-                    <td><?=$produk['upload_file']?></td>
+                    <td>: <?=$produk['upload_file']?></td>
                   </tr>
                   <tr>
                     <td><strong>Tanggal Buat</strong></td>
-                    <td><?=$produk['tanggal']?></td>
+                    <td>: <?=$produk['tanggal']?></td>
                   </tr>
                   <tr>
                     <td><strong>Bahan</strong></td>
-                    <td><?=$produk['bahan']?></td>
+                    <td>: <?=$produk['bahan']?></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Harga</strong></td>
+                    <td>: Rp. <?=number_format($produk['harga'], 0 , '' , '.' )?></td>
                   </tr>
                   <tr>
                     <td><strong>Kategori</strong></td>
-                    <td><?=$produk['berat']?> Kg</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Kategori</strong></td>
-                    <td><?=$produk['merk']?></td>
+                    <td>: <?=$produk['merk']?></td>
                   </tr>
                   <tr>
                     <td colspan="2"><h4>Ukuran</h4></td>
                   </tr>
                   <tr>
                     <td><strong>Panjang</strong></td>
-                    <td><?=$produk['u_panjang']?> cm</td>
+                    <td>: <?=$produk['panjang']?> Meter</td>
                   </tr>
                   <tr>
                     <td><strong>Lebar</strong></td>
-                    <td><?=$produk['u_lebar']?> cm</td>
+                    <td>: <?=$produk['lebar']?> Meter</td>
                   </tr>
                   <tr>
                     <td><strong>Tinggi</strong></td>
-                    <td><?=$produk['u_tinggi']?> cm</td>
+                    <td>: <?=$produk['tinggi']?> Meter</td>
                   </tr>
                 </table>
                 <hr>
                 <br>
-                <h3>Data Stok & Warna <?=$produk['nama_file']?></h3>
+                <h3>Data Stok & Warna <?=$produk['nama_produk']?></h3>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahModal">Tambah Stok</button>
                 <hr>
                 <table class="table" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th width="5%">No.</th>
-                      <th>Warna(HEX COLOR)</th>
+                      <th>Nama Warna</th>
+                      <th>Kode Warna(HEX COLOR)</th>
                       <th>Stok</th>
                       <th width="12%">Aksi</th>
                     </tr>
@@ -80,7 +81,8 @@
                   <tfoot>
                     <tr>
                       <th>#</th>
-                      <th>Warna</th>
+                      <th>Nama Warna</th>
+                      <th>Kode Warna</th>
                       <th>Stok</th>
                       <th>Aksi</th>
                     </tr>
@@ -91,10 +93,11 @@
                       foreach($stok as $r){ ?>
                       <tr>
                         <td><?php echo $no++ ?></td>
-                        <td><strong style="color: <?php echo $r->warna ?>; text-shadow: 2px 2px 5px #919191;"><?php echo $r->warna ?></strong></td>
+                        <td><?php echo $r->nama_warna ?></td>
+                        <td><strong style="color: <?php echo $r->kode_warna ?>; text-shadow: 2px 2px 5px #919191;"><?php echo $r->kode_warna ?></strong></td>
                         <td><?php echo $r->stok ?></td>
                         <td>
-                          <a href="<?php echo base_url('produk/hapus_stok/'.$r->id_produk.'/'.$r->id); ?>">Hapus</a>
+                          <a href="<?php echo base_url('produk/hapus_stok/'.$r->id_produk.'/'.$r->id_warna); ?>">Hapus</a>
                         </td>
                       </tr>
                     <?php } ?>
@@ -122,8 +125,12 @@
                 <div class="modal-body">
                   <input type="hidden" name="id_produk" value="<?php echo $id_produk; ?>">
                   <div class="form-group">
-                    <label>Warna Produk</label>
-                    <input type="text" name="warna" maxlength="7" class="form-control" value="#" required>
+                    <label>Nama Warna</label>
+                    <input type="text" name="nama_warna" maxlength="7" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Kode Warna (contoh. #00D3EE)</label>
+                    <input type="text" name="kode_warna" maxlength="7" class="form-control" value="#" required>
                   </div>
                   <div class="form-group">
                     <label>Stok</label>

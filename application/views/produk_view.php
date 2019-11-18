@@ -19,9 +19,10 @@
                   <thead>
                     <tr>
                       <th width="5%">No.</th>
+                      <th width="10%">ID Produk</th>
                       <th>Kategori</th>
                       <th>Nama File</th>
-                      <th>Keterangan</th>
+                      <th>Harga</th>
                       <th>Upload File</th>
                       <th>Aksi</th>
                     </tr>
@@ -29,9 +30,10 @@
                   <tfoot>
                     <tr>
                       <th>#</th>
+                      <th>ID Produk</th>
                       <th>Kategori</th>
                       <th>Nama File</th>
-                      <th>Keterangan</th>
+                      <th>Harga</th>
                       <th>Upload File</th>
                       <th>Aksi</th>
                     </tr>
@@ -41,20 +43,21 @@
                       $no = 1;
                       foreach($produk as $r){ 
 
-                        $kategori_val    = $this->produk->get_id_val($r->kategori_id,'t_kategori');
+                        $kategori_val    = $this->produk->get_id_val($where = array('id_kategori' => $r->id_kategori),'t_kategori');
                     ?>
                       <tr>
                         <td><?php echo $no++ ?></td>
-                        <td><?php echo $kategori_val['nama_kategori'] ?></td>
-                        <td><?php echo $r->nama_file ?></td>
-                        <td><?php echo $r->keterangan ?></td>
+                        <td><?php echo $r->id_produk ?></td>
+                        <td><strong><?php echo $kategori_val['nama_kategori'] ?></strong></td>
+                        <td><?php echo $r->nama_produk ?></td>
+                        <td>Rp. <?php echo number_format($r->harga, 0 , '' , '.' ) ?></td>
                         <td><a href="<?php echo base_url('upload_file/'.$r->upload_file) ?>" target="_blank"><?php echo $r->upload_file ?></a>
                           <small>(<a href="<?php echo base_url('produk/download_file/'.$r->upload_file) ?>" target="_blank">Download</a>)</small>
                         </td>
                         <td>
-                          <a href="<?php echo base_url('produk/edit/'.$r->id); ?>">Edit</a> | 
-                          <a href="<?php echo base_url('produk/hapus/'.$r->id); ?>">Hapus</a> | 
-                          <a href="<?php echo base_url('produk/detail/'.$r->id); ?>">Detail</a>
+                          <a href="<?php echo base_url('produk/edit/'.$r->id_produk); ?>">Edit</a> | 
+                          <a href="<?php echo base_url('produk/hapus/'.$r->id_produk); ?>">Hapus</a> | 
+                          <a href="<?php echo base_url('produk/detail/'.$r->id_produk); ?>">Detail</a>
                         </td>
                       </tr>
                     <?php } ?>

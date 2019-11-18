@@ -13,7 +13,7 @@
 	            </div>
 	            <div class="offset-md-2 col-md-8 offset-md-2 card-body">
 	            	<form action="<?php echo base_url('kategori/proses_ubah'); ?>" method="post">
-	            		<input type="hidden" name="id" value="<?php echo $u->id ?>">
+	            		<input type="hidden" name="id_kategori" value="<?php echo $u->id_kategori ?>">
 					  	<div class="form-group">
 					    	<label>Nama Kategori</label>
 					    	<input type="text" name="nama_kategori" class="form-control" placeholder="Isi Nama Kategori" value="<?php echo $u->nama_kategori ?>" required>

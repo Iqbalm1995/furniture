@@ -11,6 +11,7 @@ class Login_admin extends CI_Controller {
 
 	public function index()
 	{
+		echo md5("admin");
 		$this->load->view('login_view');
 	}
 
@@ -26,9 +27,9 @@ class Login_admin extends CI_Controller {
 		$this->form_validation->set_rules('user','Username','required|trim');
 		$this->form_validation->set_rules('pass','Password','required|trim');
 
-		$cek = $this->admin_auth->cek_login("user_admin",$where)->num_rows();
+		$cek = $this->admin_auth->cek_login("admin",$where)->num_rows();
 
-		$datas = $this->admin_auth->cek_login("user_admin",$where)->result();
+		$datas = $this->admin_auth->cek_login("admin",$where)->result();
 
 		if($this->form_validation->run()==FALSE)
 		{
@@ -45,6 +46,7 @@ class Login_admin extends CI_Controller {
 				$data_session = array(
 					'id' 				=> $id,
 					'username' 			=> $user,
+					'nama' 				=> $nama,
 
 					'status' 			=> "logindcaadministrator"
 					);
@@ -64,6 +66,7 @@ class Login_admin extends CI_Controller {
 		$data_session = array(
 					'id'					=> '',
 					'username' 				=> '',
+					'nama' 					=> '',
 					'status' 				=> ''
 					);
 

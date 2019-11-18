@@ -5,8 +5,8 @@ class Mo_user_admin extends CI_Model {
 
 	public function tampil_data()
 	{
-        $this->db->from("user_admin");
-        $this->db->order_by("id", "ASC");
+        $this->db->from("admin");
+        $this->db->order_by("id_admin", "ASC");
         return $this->db->get();
 	}
 

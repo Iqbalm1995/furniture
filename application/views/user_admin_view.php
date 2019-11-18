@@ -20,7 +20,7 @@
                     <tr>
                       <th width="5%">No.</th>
                       <th>Username</th>
-                      <th>Keterangan</th>
+                      <th>Nama</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -28,7 +28,7 @@
                     <tr>
                       <th>#</th>
                       <th>Username</th>
-                      <th>Keterangan</th>
+                      <th>Nama</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
@@ -39,15 +39,15 @@
                     ?>
                       <tr>
                         <td><?php echo $no++ ?></td>
-                        <td><?php echo $r->username ?></td>
-                        <td><?php echo $r->keterangan ?></td>
+                        <td><strong><?php echo $r->username ?></strong></td>
+                        <td><?php echo $r->nama ?></td>
                         <td>
                           <?php  
-                            if ($r->id == 1) {?>
+                            if ($r->id_admin == 1) {?>
                              -
                           <?php  }else{ ?> 
-                            <a href="<?php echo base_url('user_admin/edit/'.$r->id); ?>">Ubah</a> | 
-                            <a href="<?php echo base_url('user_admin/hapus/'.$r->id); ?>">Hapus</a>
+                            <a href="<?php echo base_url('user_admin/edit/'.$r->id_admin); ?>">Ubah</a> | 
+                            <a href="<?php echo base_url('user_admin/hapus/'.$r->id_admin); ?>">Hapus</a>
                           <?php } ?>
                         </td>
                       </tr>

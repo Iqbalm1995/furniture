@@ -18,12 +18,12 @@
 					    <input type="text" name="username" class="form-control" placeholder="Isi Username" required>
 					  </div>
 					  <div class="form-group">
-					    <label>Password Baru</label>
-					    <input type="password" name="password" class="form-control" placeholder="Isi Password" required>
+					    <label>Nama</label>
+					    <input type="text" name="nama" class="form-control" placeholder="Isi Nama" required>
 					  </div>
 					  <div class="form-group">
-					    <label>Keterangan</label>
-					    <textarea class="form-control" name="keterangan" placeholder="Keterangan (Opsional)"></textarea>
+					    <label>Password Baru</label>
+					    <input type="password" name="password" class="form-control" placeholder="Isi Password" required>
 					  </div>
 					  <button type="submit" class="btn btn-primary">Simpan</button>
 					</form>

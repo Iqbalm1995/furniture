@@ -32,14 +32,14 @@ class User_admin extends CI_Controller {
 	function proses_tambah(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		$keterangan = $this->input->post('keterangan');
+		$nama = $this->input->post('nama');
  
 		$data = array(
 			'username' => $username,
 			'password' => md5($password),
-			'keterangan' => $keterangan
+			'nama' => $nama
 			);
-		$this->user_admin->input_data($data,'user_admin');
+		$this->user_admin->input_data($data,'admin');
 		$this->session->set_flashdata('message1', '
 			<div class="alert alert-info alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -50,16 +50,16 @@ class User_admin extends CI_Controller {
 	}
 
 	function edit($id){
-		$where = array('id' => $id);
-		$data['user_admin'] = $this->user_admin->edit_data($where,'user_admin')->result();
+		$where = array('id_admin' => $id);
+		$data['user_admin'] = $this->user_admin->edit_data($where,'admin')->result();
 		$this->load->view('header_view');
 		$this->load->view('user_admin_edit', $data);
 		$this->load->view('footer_view');
 	}
 
 	function hapus($id){
-		$where = array('id' => $id);
-		$this->user_admin->hapus_data($where,'user_admin');
+		$where = array('id_admin' => $id);
+		$this->user_admin->hapus_data($where,'admin');
 		$this->session->set_flashdata('message1', '
 			<div class="alert alert-info alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -70,20 +70,20 @@ class User_admin extends CI_Controller {
 	}
 
 	function proses_ubah(){
-		$id = $this->input->post('id');
+		$id = $this->input->post('id_admin');
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		$keterangan = $this->input->post('keterangan');
+		$nama = $this->input->post('nama');
  
 		$data = array(
 			'username' => $username,
 			'password' => md5($password),
-			'keterangan' => $keterangan
+			'nama' => $nama
 		);
 
-		$where = array('id' => $id);
+		$where = array('id_admin' => $id);
 
-		$this->user_admin->update_data($where,$data,'user_admin');
+		$this->user_admin->update_data($where,$data,'admin');
 		$this->session->set_flashdata('message1', '
 			<div class="alert alert-info alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
