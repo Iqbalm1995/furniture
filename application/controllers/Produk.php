@@ -55,6 +55,30 @@ class Produk extends CI_Controller {
 		$this->load->view('footer_view');
 	}
 
+	public function produkList_json()
+	{
+		$produk = $this->produk->tampil_data()->result();
+		$result = json_encode($produk);
+
+		echo $result;
+	}
+
+	public function produkDetail_json($id)
+	{
+		$produk = $this->produk->tampil_detail($id);
+		$result = json_encode($produk);
+
+		echo $result;
+	}
+
+	public function produkStok_json($id)
+	{
+		$produk = $this->produk->tampil_stok($id)->result();
+		$result = json_encode($produk);
+
+		echo $result;
+	}
+
 	function tambah_stok(){
 
 		$id_produk 		= $this->input->post('id_produk');
