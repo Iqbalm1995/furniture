@@ -48,6 +48,10 @@
                     <td>: <?=$produk['merk']?></td>
                   </tr>
                   <tr>
+                    <td><strong>Dibuat Oleh</strong></td>
+                    <td>: <?=$produk['nama']?></td>
+                  </tr>
+                  <tr>
                     <td colspan="2"><h4>Ukuran</h4></td>
                   </tr>
                   <tr>
@@ -75,6 +79,7 @@
                       <th>Nama Warna</th>
                       <th>Kode Warna(HEX COLOR)</th>
                       <th>Stok</th>
+                      <th>Dibuat oleh</th>
                       <th width="12%">Aksi</th>
                     </tr>
                   </thead>
@@ -84,6 +89,7 @@
                       <th>Nama Warna</th>
                       <th>Kode Warna</th>
                       <th>Stok</th>
+                      <th>Dibuat oleh</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
@@ -96,6 +102,7 @@
                         <td><?php echo $r->nama_warna ?></td>
                         <td><strong style="color: <?php echo $r->kode_warna ?>; text-shadow: 2px 2px 5px #919191;"><?php echo $r->kode_warna ?></strong></td>
                         <td><?php echo $r->stok ?></td>
+                        <td><?php echo $r->nama ?></td>
                         <td>
                           <a href="<?php echo base_url('produk/hapus_stok/'.$r->id_produk.'/'.$r->id_warna); ?>">Hapus</a>
                         </td>

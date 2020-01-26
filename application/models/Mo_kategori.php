@@ -5,7 +5,9 @@ class Mo_kategori extends CI_Model {
 
 	public function tampil_data()
 	{
-        $this->db->from("t_kategori");
+		$this->db->select("t_kategori.*, admin.id_admin AS id_user, admin.nama as nama");
+		$this->db->from("t_kategori");
+		$this->db->join("admin", "t_kategori.id_admin = admin.id_admin");
         $this->db->order_by("id_kategori", "DESC");
         return $this->db->get();
 	}

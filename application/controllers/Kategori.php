@@ -35,7 +35,9 @@ class Kategori extends CI_Controller {
  
 		$data = array(
 			'nama_kategori' => $nama_kategori,
-			'keterangan' => $keterangan
+			'keterangan' => $keterangan,
+			'id_admin'		=> $this->session->userdata('id')
+			
 			);
 		$this->kategori->input_data($data,'t_kategori');
 		$this->session->set_flashdata('message1', '
@@ -74,7 +76,8 @@ class Kategori extends CI_Controller {
  
 		$data = array(
 			'nama_kategori' => $nama_kategori,
-			'keterangan' => $keterangan
+			'keterangan' => $keterangan,
+			'id_admin'		=> $this->session->userdata('id')
 			);
 
 		$where = array('id_kategori' => $id);

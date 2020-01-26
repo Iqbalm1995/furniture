@@ -38,7 +38,7 @@ class Produk extends CI_Controller {
 	public function index()
 	{
 		$data['produk'] = $this->produk->tampil_data()->result();
-
+		
 		$this->load->view('header_view');
 		$this->load->view('produk_view', $data);
 		$this->load->view('footer_view');
@@ -89,14 +89,16 @@ class Produk extends CI_Controller {
 		$dataWarna = array(
 			'id_produk' 	=> $id_produk,
 			'nama_warna' 	=> $nama_warna,
-			'kode_warna' 	=> $kode_warna
+			'kode_warna' 	=> $kode_warna,
+			'id_admin'		=> $this->session->userdata('id')
 			);
 
 		$this->produk->input_data($dataWarna,'t_warna');
 
 		$dataStok = array(
 			'id_warna' 		=> $this->db->insert_id(),
-			'stok' 			=> $stok
+			'stok' 			=> $stok,
+			'id_admin'		=> $this->session->userdata('id')
 			);
 
 		$this->produk->input_data($dataStok,'t_stok');
@@ -141,6 +143,7 @@ class Produk extends CI_Controller {
 			'tanggal' 		=> $tanggal,
 			'bahan' 		=> $bahan,
 			'merk' 			=> $merk,
+			'id_admin'		=> $this->session->userdata('id')
 			);
 
 		if(!empty($_FILES['upload_file']['name']))
@@ -157,6 +160,7 @@ class Produk extends CI_Controller {
 			'panjang' 		=> $panjang,
 			'lebar' 		=> $lebar,
 			'tinggi' 		=> $tinggi,
+			'id_admin'		=> $this->session->userdata('id')
 			);
 
 		$this->produk->input_ukuran($dataUkuran,'t_ukuran');
@@ -231,6 +235,7 @@ class Produk extends CI_Controller {
 			'bahan' 		=> $bahan,
 			'harga' 		=> $harga,
 			'merk' 			=> $merk,
+			'id_admin'		=> $this->session->userdata('id')
 			);
 
 		if(!empty($_FILES['upload_file']['name']))
@@ -253,6 +258,7 @@ class Produk extends CI_Controller {
 			'panjang' 		=> $panjang,
 			'lebar' 		=> $lebar,
 			'tinggi' 		=> $tinggi,
+			'id_admin'		=> $this->session->userdata('id')
 			);
 
 		$this->produk->update_data($where,$dataUkuran,'t_ukuran');

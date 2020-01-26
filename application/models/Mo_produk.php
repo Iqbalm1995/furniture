@@ -22,10 +22,13 @@ class Mo_produk extends CI_Model {
 							t_ukuran.tinggi AS tinggi,
 							t_produk.bahan AS bahan,
 							t_produk.harga AS harga,
-							t_produk.merk AS merk');
+							t_produk.merk AS merk, 
+							admin.id_admin AS id_user, 
+							admin.nama as nama');
         $this->db->from('t_produk');
         $this->db->join('t_kategori', 't_produk.id_kategori = t_kategori.id_kategori');
         $this->db->join('t_ukuran', 't_produk.id_produk = t_ukuran.id_produk');
+		$this->db->join("admin", "t_produk.id_admin = admin.id_admin");
         $this->db->where('t_produk.id_produk', $id);
         $query = $this->db->get();
         return $query->row_array();
@@ -37,9 +40,12 @@ class Mo_produk extends CI_Model {
 							t_warna.nama_warna AS nama_warna,
 							t_warna.kode_warna AS kode_warna,
 							t_stok.stok AS stok,
-							t_warna.id_produk AS id_produk');
+							t_warna.id_produk AS id_produk, 
+							admin.id_admin AS id_user, 
+							admin.nama as nama');
         $this->db->from("t_warna");
         $this->db->join('t_stok', 't_warna.id_warna = t_stok.id_warna');
+		$this->db->join("admin", "t_warna.id_admin = admin.id_admin");
         $this->db->where('t_warna.id_produk', $id);
         $this->db->order_by("t_warna.id_warna", "DESC");
         return $this->db->get();
@@ -65,9 +71,12 @@ class Mo_produk extends CI_Model {
 							t_ukuran.tinggi AS tinggi,
 							t_produk.bahan AS bahan,
 							t_produk.harga AS harga,
-							t_produk.merk AS merk');
+							t_produk.merk AS merk, 
+							admin.id_admin AS id_user, 
+							admin.nama as nama');
         $this->db->from('t_produk');
         $this->db->join('t_ukuran', 't_produk.id_produk = t_ukuran.id_produk');
+		$this->db->join("admin", "t_produk.id_admin = admin.id_admin");
         $this->db->where($where);
         $query = $this->db->get();
         return $query->row_array();

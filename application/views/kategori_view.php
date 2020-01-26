@@ -21,6 +21,7 @@
                       <th width="5%">No.</th>
                       <th>Nama Kategori</th>
                       <th>Keterangan</th>
+                      <th>Dibuat oleh</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -29,6 +30,7 @@
                       <th>#</th>
                       <th>Nama Kategori</th>
                       <th>Keterangan</th>
+                      <th>Dibuat oleh</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
@@ -41,6 +43,7 @@
                         <td><?php echo $no++ ?></td>
                         <td><?php echo $r->nama_kategori ?></td>
                         <td><?php echo $r->keterangan ?></td>
+                        <td><?php echo $r->nama ?></td>
                         <td>
                           <a href="<?php echo base_url('kategori/edit/'.$r->id_kategori); ?>">Edit</a> | 
                           <a href="<?php echo base_url('kategori/hapus/'.$r->id_kategori); ?>">Hapus</a>
