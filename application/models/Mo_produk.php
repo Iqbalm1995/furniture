@@ -38,7 +38,6 @@ class Mo_produk extends CI_Model {
 	{
 		$this->db->select('	t_warna.id_warna AS id_warna,
 							t_warna.nama_warna AS nama_warna,
-							t_warna.kode_warna AS kode_warna,
 							t_stok.stok AS stok,
 							t_warna.id_produk AS id_produk, 
 							admin.id_admin AS id_user, 

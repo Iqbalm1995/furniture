@@ -83,13 +83,11 @@ class Produk extends CI_Controller {
 
 		$id_produk 		= $this->input->post('id_produk');
 		$nama_warna 	= $this->input->post('nama_warna');
-		$kode_warna 	= $this->input->post('kode_warna');
 		$stok 			= $this->input->post('stok');
  
 		$dataWarna = array(
 			'id_produk' 	=> $id_produk,
 			'nama_warna' 	=> $nama_warna,
-			'kode_warna' 	=> $kode_warna,
 			'id_admin'		=> $this->session->userdata('id')
 			);
 
@@ -274,7 +272,7 @@ class Produk extends CI_Controller {
 
 	private function _do_upload()
 	{
-		$file_name = "file_".time();
+		// $file_name = "file_".time();
 
 		$config['upload_path']          = 'upload_file/';
         // $config['allowed_types']        = 'file|jpg|png|pdf';
@@ -282,7 +280,7 @@ class Produk extends CI_Controller {
         $config['max_size']             = 1000000; //set max size allowed in Kilobyte
         // $config['max_width']            = 1000; // set max width image allowed
         // $config['max_height']           = 1000; // set max height allowed
-        $config['file_name']            = $file_name; //just milisecond timestamp fot unique name
+        // $config['file_name']            = $file_name; //just milisecond timestamp fot unique name
 
         $this->load->library('upload', $config);
 

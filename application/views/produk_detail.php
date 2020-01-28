@@ -77,7 +77,6 @@
                     <tr>
                       <th width="5%">No.</th>
                       <th>Nama Warna</th>
-                      <th>Kode Warna(HEX COLOR)</th>
                       <th>Stok</th>
                       <th>Dibuat oleh</th>
                       <th width="12%">Aksi</th>
@@ -87,7 +86,6 @@
                     <tr>
                       <th>#</th>
                       <th>Nama Warna</th>
-                      <th>Kode Warna</th>
                       <th>Stok</th>
                       <th>Dibuat oleh</th>
                       <th>Aksi</th>
@@ -100,7 +98,6 @@
                       <tr>
                         <td><?php echo $no++ ?></td>
                         <td><?php echo $r->nama_warna ?></td>
-                        <td><strong style="color: <?php echo $r->kode_warna ?>; text-shadow: 2px 2px 5px #919191;"><?php echo $r->kode_warna ?></strong></td>
                         <td><?php echo $r->stok ?></td>
                         <td><?php echo $r->nama ?></td>
                         <td>
@@ -132,12 +129,12 @@
                 <div class="modal-body">
                   <input type="hidden" name="id_produk" value="<?php echo $id_produk; ?>">
                   <div class="form-group">
-                    <label>Nama Warna</label>
-                    <input type="text" name="nama_warna" maxlength="7" class="form-control" required>
-                  </div>
-                  <div class="form-group">
-                    <label>Kode Warna (contoh. #00D3EE)</label>
-                    <input type="text" name="kode_warna" maxlength="7" class="form-control" value="#" required>
+                    <label>Warna</label>
+                    <select name="nama_warna" id="nama_warna" class="form-control">
+                      <option value="Putih">Putih</option>
+                      <option value="Hitam">Hitam</option>
+                      <option value="Cokelat">Cokelat</option>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label>Stok</label>
