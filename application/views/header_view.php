@@ -69,6 +69,12 @@
           <i class="fas fa-fw fa-folder"></i>
           <span>Data Kategori</span></a>
       </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('download_apk/');?>">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Download/Upload APK</span></a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('user_admin/');?>">
