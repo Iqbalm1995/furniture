@@ -59,10 +59,24 @@
                     </div>
                     <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                   </form>
-                  <hr>
                   <div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                   </div>
+                  <hr>
+                  <center>
+                    <label class="pt-2">Download Aplikasi AR Furniture</label>
+                    <div class="col-lg-6">
+                      <?php
+                      if (count($data_apk) > 0) { ?>
+                        <a href="<?php echo base_url('upload_file/apk/'.$data_apk['nama_file']) ?>" class="btn btn-info btn-block"><i class="fas fa-download"></i> Download APK</a>
+                        <small>Versi <?= $data_apk['versi']; ?> | Update <?= $data_apk['tgl_upload']; ?></small>
+                      <?php } else{ ?>
+                        <button class="btn btn-info btn-block" disabled><i class="fas fa-download"></i> Download APK</button>
+                        <small><i>*Aplikasi belum diupload</i></small>  
+                      <?php } ?>
+                    </div>
+                    
+                  </center>
                 </div>
               </div>
             </div>

@@ -11,6 +11,15 @@ class Mo_apk_upload extends CI_Model {
         return $this->db->get();
 	}
 
+	public function last_data()
+	{
+		$this->db->select("*");
+		$this->db->from("t_apk_upload");
+        $this->db->order_by("id", "DESC");
+        $this->db->limit(1);
+        return $this->db->get();
+	}
+
 	function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}

@@ -7,12 +7,14 @@ class Login_admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Mo_admin_auth','admin_auth');
+		$this->load->model('Mo_apk_upload', 'apk_upload');
 	}
 
 	public function index()
 	{
-		echo md5("admin");
-		$this->load->view('login_view');
+
+        $data['data_apk'] = $this->apk_upload->last_data()->row_array();
+		$this->load->view('login_view', $data);
 	}
 
 	public function login()
